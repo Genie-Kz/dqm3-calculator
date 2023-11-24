@@ -12,3 +12,8 @@ table.monster-info {
   table-layout: fixed;
   writing-mode: horizontal-tb;
 }
+
+input,
+select {
+  border: none !important;
+}
