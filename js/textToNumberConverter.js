@@ -2,6 +2,9 @@
 
 import { aiCoefficient, statusLabels, sizeCoefficient } from "./constants.js";
 
+/**
+ * 種族情報から計算に必要な数値に変換
+ */
 export class TextToNumberConverter {
     /**
      * @type {Number}

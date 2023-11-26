@@ -6,12 +6,6 @@ export const aiCoefficient = {
     "AI2～3回行動": 0.7,
 };
 
-// copilot調教
-// hp-> H mp -> M atk -> A def -> D spd -> S wisdom -> W
-// と略記し 例えばHMAとすると
-// hpが1倍 mpが1倍 atkが1倍 defが0倍 spdが0倍 wisdomが0倍となる
-// HMWは？
-// hpが1倍 mpが1倍 atkが0倍 defが0倍 spdが0倍 wisdomが1倍となる
 export const lineageCoefficient = {
     "???": {
         // HAW

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container px-4 p-md-0">
       <div class="row">
         <div class="col-md-5 col-12 mt-5">
           <div class="card">
@@ -37,7 +37,7 @@
                 <div class="col">
                   <div>
                     <img
-                      src="./img/298a.jpg"
+                      src="./img/preparing.png"
                       alt=""
                       width="60"
                       heigh="60種族名"
@@ -48,15 +48,13 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="リリパット"
+                    value="スライム"
                     placeholder="種族名"
                     list="monster-name-list"
                     id="monster-name"
                   />
-                  <datalist name="" id="monster-name-list">
-                    <option value="リリパット"></option>
-                    <option value="スライム"></option>
-                  </datalist>
+                  <!-- TODO: 候補がいい感じに表示されるようにする -->
+                  <datalist name="" id="monster-name-list"> </datalist>
                 </div>
               </div>
               <hr class="my-2" />
@@ -67,7 +65,7 @@
                     type="text"
                     id="size-number"
                     class="form-control"
-                    value="37"
+                    value="50"
                   />
                 </div>
               </div>
@@ -82,13 +80,7 @@
               <div class="row align-items-center">
                 <div class="col">行動回数</div>
                 <div class="col-6">
-                  <select name="" id="ai-text" class="form-select">
-                    <option value="AI1回行動">AI1回行動</option>
-                    <option value="AI1～2回行動">AI1～2回行動</option>
-                    <option value="AI2回行動">AI2回行動</option>
-                    <option value="AI1～3回行動">AI1～3回行動</option>
-                    <option value="AI2～3回行動">AI2～3回行動</option>
-                  </select>
+                  <span id="ai-text"></span>
                 </div>
               </div>
               <hr class="my-2" />
@@ -99,7 +91,7 @@
                     type="text"
                     id="level-bonus"
                     class="form-control"
-                    value="46"
+                    value="200"
                   />
                 </div>
               </div>
@@ -123,9 +115,14 @@
         </div>
         <!-- end-col -->
         <div class="col-md-7 col-12 mt-5">
+          <!-- TODO: 系統画像に差し替える -->
           <div class="row mx-0" id="family-tree">
             <div class="col-3 text-center border py-2">
-              <select name="" id="" class="form-select grand-parent">
+              <select
+                name=""
+                id=""
+                class="form-select text-center grand-parent"
+              >
                 <option value="スライム">スライム</option>
                 <option value="ドラゴン">ドラゴン</option>
                 <option value="自然">自然</option>
@@ -137,7 +134,11 @@
               </select>
             </div>
             <div class="col-3 text-center border py-2">
-              <select name="" id="" class="form-select grand-parent">
+              <select
+                name=""
+                id=""
+                class="form-select text-center grand-parent"
+              >
                 <option value="スライム" selected>スライム</option>
                 <option value="ドラゴン">ドラゴン</option>
                 <option value="自然">自然</option>
@@ -149,7 +150,11 @@
               </select>
             </div>
             <div class="col-3 text-center border py-2">
-              <select name="" id="" class="form-select grand-parent">
+              <select
+                name=""
+                id=""
+                class="form-select text-center grand-parent"
+              >
                 <option value="スライム">スライム</option>
                 <option value="ドラゴン">ドラゴン</option>
                 <option value="自然">自然</option>
@@ -161,7 +166,11 @@
               </select>
             </div>
             <div class="col-3 text-center border py-2">
-              <select name="" id="" class="form-select grand-parent">
+              <select
+                name=""
+                id=""
+                class="form-select text-center grand-parent"
+              >
                 <option value="スライム">スライム</option>
                 <option value="ドラゴン">ドラゴン</option>
                 <option value="自然" selected>自然</option>
@@ -197,36 +206,37 @@
               </select>
             </div>
           </div>
-          <table class="table table-bordered mt-4">
+          <!-- end-row -->
+          <table class="table table-bordered mt-4" id="status-table">
             <thead>
-              <tr class="table-light">
-                <th scope="col">項目</th>
-                <th class="text-center" scope="col">HP</th>
-                <th class="text-center" scope="col">MP</th>
-                <th class="text-center" scope="col">攻撃力</th>
-                <th class="text-center" scope="col">守備力</th>
-                <th class="text-center" scope="col">素早さ</th>
-                <th class="text-center" scope="col">賢さ</th>
+              <tr class="table-light text-end">
+                <th scope="col" class="text-center">項目</th>
+                <th scope="col">HP</th>
+                <th scope="col">MP</th>
+                <th scope="col">攻撃力</th>
+                <th scope="col">守備力</th>
+                <th scope="col">素早さ</th>
+                <th scope="col">賢さ</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">基礎値</th>
-                <td class="text-end" id="base-status-hp">1410</td>
-                <td class="text-end" id="base-status-mp">460</td>
-                <td class="text-end" id="base-status-atk">520</td>
-                <td class="text-end" id="base-status-def">500</td>
-                <td class="text-end" id="base-status-spd">460</td>
-                <td class="text-end" id="base-status-wisdom">340</td>
+              <tr class="text-end">
+                <th scope="row" class="text-center">基礎値</th>
+                <td class="text-end" id="base-status-hp"></td>
+                <td class="text-end" id="base-status-mp"></td>
+                <td class="text-end" id="base-status-atk"></td>
+                <td class="text-end" id="base-status-def"></td>
+                <td class="text-end" id="base-status-spd"></td>
+                <td class="text-end" id="base-status-wisdom"></td>
               </tr>
-              <tr>
-                <th scope="row">最終値</th>
-                <td class="text-end" id="calculated-status-hp">1429</td>
-                <td class="text-end" id="calculated-status-mp">472</td>
-                <td class="text-end" id="calculated-status-atk">531</td>
-                <td class="text-end" id="calculated-status-def">507</td>
-                <td class="text-end" id="calculated-status-spd">487</td>
-                <td class="text-end" id="calculated-status-wisdom">349</td>
+              <tr class="text-end">
+                <th scope="row" class="text-center">最終値</th>
+                <td class="text-end fw-normal" id="calculated-status-hp"></td>
+                <td id="calculated-status-mp"></td>
+                <td id="calculated-status-atk"></td>
+                <td id="calculated-status-def"></td>
+                <td id="calculated-status-spd"></td>
+                <td id="calculated-status-wisdom"></td>
               </tr>
             </tbody>
           </table>
